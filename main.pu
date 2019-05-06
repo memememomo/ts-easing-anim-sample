@@ -1,0 +1,39 @@
+@startuml
+
+interface Easing
+
+class easeIn
+class easeOut
+class easeInOut
+class easeXxx
+
+abstract Point {
+  x
+  y
+  sizeX
+  sizeY
+}
+
+class Ellipse
+
+class Tween {
+  target: Point
+  startPoint: Point
+  destPoint: Point
+  duration: number
+  easingFunc: Easing
+  startTime: number
+  delayTime: number
+}
+
+Point <|.. Ellipse
+
+Easing <|-- easeIn
+Easing <|-- easeOut
+Easing <|-- easeInOut
+Easing <|-- easeXxx
+
+Tween --> Point: target
+Tween --> Easing: easingFunc
+
+@enduml
